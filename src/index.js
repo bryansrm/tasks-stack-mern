@@ -1,4 +1,6 @@
 const express = require('express');
+const morgan = require('morgan');
+const routes = require('./routes/tasks.routes');
 const app = express();
 
 //Settings
@@ -6,8 +8,11 @@ const app = express();
 app.set('port', process.env.PORT || 3000);
 
 //Middlewares
+app.use(morgan('dev'));
+app.use(express.json());
 
 //Routes
+app.use('/api/saludos', routes);
 
 //Static files
 
